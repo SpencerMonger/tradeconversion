@@ -14,7 +14,8 @@ app.add_middleware(
         "https://trade-conversion.vercel.app",  # Your actual Vercel domain
         "https://tradeconversion.vercel.app",
         "https://another-trade-converter.vercel.app/",
-        "https://trade-converter-new.vercel.app/",   # Add variations of your domain if needed
+        "https://trade-converter-new.vercel.app/",
+        "https://conversion-backend-eight.vercel.app/",   # Add variations of your domain if needed
     ],
     allow_credentials=True,
     allow_methods=["*"],
