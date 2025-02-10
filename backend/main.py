@@ -13,7 +13,8 @@ app.add_middleware(
         "http://localhost:3000",  # Development
         "https://trade-conversion.vercel.app",  # Your actual Vercel domain
         "https://tradeconversion.vercel.app",
-        "https://another-trade-converter.vercel.app/",   # Add variations of your domain if needed
+        "https://another-trade-converter.vercel.app/",
+        "https://trade-converter-new.vercel.app/",   # Add variations of your domain if needed
     ],
     allow_credentials=True,
     allow_methods=["*"],
