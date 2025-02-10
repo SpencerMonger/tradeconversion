@@ -9,7 +9,12 @@ app = FastAPI()
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with your frontend URL
+    allow_origins=[
+        "http://localhost:3000",  # Development
+        "https://trade-conversion.vercel.app",  # Your actual Vercel domain
+        "https://tradeconversion.vercel.app",
+        "https://another-trade-converter.vercel.app/",   # Add variations of your domain if needed
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

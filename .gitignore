@@ -81,3 +81,4 @@ Desktop.ini
 # Project specific
 *.csv
 *.tlg 
+.vercel
