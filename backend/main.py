@@ -6,19 +6,18 @@ import os
 
 app = FastAPI()
 
-# Configure CORS
+# Configure CORS before any routes
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",  # Development
-        "https://trade-conversion.vercel.app",  # Your frontend URL
-        "https://tradeconversion.vercel.app",
-        "https://trade-converter-new.vercel.app",
-        "https://conversion-backend-eight.vercel.app",   # Your backend URL
+        "http://localhost:3000",
+        "https://trade-converter-new.vercel.app",  # Your current frontend URL
+        "https://conversion-backend-eight.vercel.app",
     ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],  # Explicitly specify methods
     allow_headers=["*"],
+    expose_headers=["*"],
 )
 
 @app.post("/api/convert")

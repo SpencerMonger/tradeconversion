@@ -5,7 +5,7 @@ import { Upload, FileUp, CheckCircle2, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, '') || 'http://localhost:8000';
 
 const downloadCSV = (csvContent: string, filename: string) => {
   // Create a blob from the CSV content
