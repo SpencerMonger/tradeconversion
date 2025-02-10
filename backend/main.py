@@ -11,11 +11,10 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",  # Development
-        "https://trade-conversion.vercel.app",  # Your actual Vercel domain
+        "https://trade-conversion.vercel.app",  # Your frontend URL
         "https://tradeconversion.vercel.app",
-        "https://another-trade-converter.vercel.app/",
-        "https://trade-converter-new.vercel.app/",
-        "https://conversion-backend-eight.vercel.app/",   # Add variations of your domain if needed
+        "https://trade-converter-new.vercel.app",
+        "https://conversion-backend-eight.vercel.app",   # Your backend URL
     ],
     allow_credentials=True,
     allow_methods=["*"],
