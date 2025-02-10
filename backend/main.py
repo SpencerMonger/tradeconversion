@@ -23,7 +23,6 @@ async def convert_trade_file(file: UploadFile):
     try:
         # Create temporary files for input and output
         with tempfile.NamedTemporaryFile(delete=False, suffix='.tlg') as temp_input:
-            # Write uploaded file content
             content = await file.read()
             temp_input.write(content)
             temp_input_path = temp_input.name
@@ -41,7 +40,14 @@ async def convert_trade_file(file: UploadFile):
         os.unlink(temp_input_path)
         os.unlink(temp_output_path)
         
-        return {"success": True, "data": csv_content}
+        # Generate output filename based on input filename
+        output_filename = file.filename.replace('.tlg', '.csv')
+        
+        return {
+            "success": True,
+            "data": csv_content,
+            "filename": output_filename
+        }
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

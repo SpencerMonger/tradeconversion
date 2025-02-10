@@ -7,6 +7,27 @@ import { Card, CardContent } from "@/components/ui/card"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
+const downloadCSV = (csvContent: string, filename: string) => {
+  // Create a blob from the CSV content
+  const blob = new Blob([csvContent], { type: 'text/csv' });
+  
+  // Create a temporary URL for the blob
+  const url = window.URL.createObjectURL(blob);
+  
+  // Create a temporary link element
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  
+  // Append link to body, click it, and remove it
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Clean up the URL
+  window.URL.revokeObjectURL(url);
+};
+
 export default function TradePage() {
   const [isDragging, setIsDragging] = useState(false)
   const [file, setFile] = useState<File | null>(null)
@@ -61,6 +82,11 @@ export default function TradePage() {
       }
 
       setResult(data)
+      
+      // Automatically download the file when conversion is successful
+      if (data.success && data.data) {
+        downloadCSV(data.data, data.filename)
+      }
     } catch (error) {
       setResult({
         success: false,
